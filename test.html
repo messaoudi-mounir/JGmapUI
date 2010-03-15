@@ -1,0 +1,95 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html style="overflow: hidden; height: 100%;" xmlns="http://www.w3.org/1999/xhtml">
+
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<title>Google Maps and jQuery</title>
+<!-- css site -->
+
+<link type="text/css" href="./html/themes/base/jquery.ui.all.css" rel="Stylesheet" /> <!-- google map key  -->
+
+	<style type="text/css">
+	
+body {
+	font-family: "Trebuchet MS", "Helvetica", "Arial",  "Verdana", "sans-serif";
+		font-size: 62.5%;
+}
+	#toolbar {
+		padding: 10px 4px;
+	}
+	</style>
+
+<script type="text/javascript" src="./html/js/jquery-1.4.2.js"></script>
+<script type="text/javascript" src="./html/js/jquery-ui.js"></script>
+<script type="text/javascript" src="jquery.gmapUi.js"></script>
+
+	
+<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=false&amp;key=ABQIAAAAzr2EBOXUKnm_jVnk0OJI7xSosDVG8KKPE1-m51RBrvYughuyMxQ-i1QfUnH94QxWIa6N4U6MouMmBA"
+            type="text/javascript"></script>
+
+
+<script>
+var map ;
+function initialize() {
+   if (GBrowserIsCompatible()) {
+      map = new GMap2(document.getElementById("map_canvas"));
+      //var ui = new GMapUIOptions();
+		//ui.maptypes = {normal:true,satellite:true,hybrid:true}
+		//ui.zoom = {scrollwheel:f};
+		//ui.controls = { largemapcontrol3d :false};
+
+		//map.setUI(ui);		      
+     
+        map.setCenter(new GLatLng(37.4419, -122.1419), 13);
+       //map.setUIToDefault();
+   }
+ }
+
+
+
+
+
+
+  /*
+    var map =  new GMap2( document.getElementById( 'map' ) , {draggableCursor:"crosshair"} );
+    var ui = new GMapUIOptions();
+	ui.maptypes = {normal:true}
+	ui.zoom = {scrollwheel:true};
+	ui.controls = { largemapcontrol3d  :true};
+	map.setUI(ui);		      
+
+    // activé zoom avec souris scroll
+    map.enableDoubleClickZoom();
+    map.enableScrollWheelZoom();  
+    
+    map.getContainer().style.overflow="hidden";
+    
+    //prevent page scroll				
+	//GEvent.addDomListener(map.getContainer(), "DOMMouseScroll", wheelevent);		
+	map.setCenter(new GLatLng(37.0 , 2.0), 5 );	  
+
+*/
+	$(document).ready(function () { 				    
+	  $('#switcher').themeswitcher();
+	  initialize();
+
+	 $.gmapUi(map,{mapControl:'GLargeMapControls'});  
+
+
+  });
+		  
+</script>
+
+
+</head>
+
+<body onload="" onunload="GUnload()">
+ 
+	<script type="text/javascript"src="http://jqueryui.com/themeroller/themeswitchertool/"></script>
+	<div id="switcher" class="hidden"></div>
+	<br>	
+	<div id="map_canvas" style="width: 800px; height: 600px"></div>
+	
+</body>
+</html>
