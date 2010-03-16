@@ -1,4 +1,10 @@
-// jQuery object
+/*
+* jGmapUi jquery plugin -- Theming Google Maps UI with jQuery UI 
+* Copyright  (c) 2010 MESSAOUDI Mounir (messaoudi_mo@yahoo.com)
+* Date: 16/03/2010
+* Version: 0.1
+*/
+
 jQuery.jGmapUi = function(map,options){
 	// Check if the browser is compatible with Google Maps
 	if (!window.GBrowserIsCompatible || !GBrowserIsCompatible() || !map.isLoaded() ) return false;
@@ -9,20 +15,15 @@ jQuery.jGmapUi = function(map,options){
 	var gmapUi_mapContainerId = map.getContainer().id;
     var gmapUi_mapContainer = '#'+ map.getContainer().id;
     
-  	// définition des paramètres par défaut
+  	// default parameters
     var defaults = {
         mapControl: 'GLargeMapControl', //  GSmallMapControl , GSmallZoomControl , 
         mapTypeControl : true
     }; 
-   
-      
-    // mélange des paramètres fournis et des paramètres par défaut
    options = $.extend(defaults, options);      
-     
-
-    
-    if(options.mapTypeControl){
-        // map types tool bar   
+   
+   // if map type control is enabled    
+   if(options.mapTypeControl){
 	    $('<span style="padding: 4px 0px 4px 3px;" class="ui-widget-header ui-corner-all"></span>')
 	    .css({float:'right', position:'absolute', right:'0px', margin : '8px 4px 0px 0px',opacity: '0.8'})
 	    .append('<span id="gmapUi_mapTypes_'+gmapUi_mapContainerId+'"></span>')
@@ -57,15 +58,9 @@ jQuery.jGmapUi = function(map,options){
      default : 
      	addMapControl();
      	addGLargeMapControlZoom();
-
    }
    
 
-   
-   function addZoomControl(){
-   
-   }
-   
    function addMapControl(){
 	     //left button
 	    $('<button id="left">left</button>').button({
@@ -187,14 +182,14 @@ jQuery.jGmapUi = function(map,options){
    }
     
     
-   function addGSmallZoomControl(){
-      		// zoom +
+	function addGSmallZoomControl(){
+	// zoom +
 		$('<button id="zoom_plus">zoom plus</button>').button({
 				text: false,
 				icons: {
 					primary: 'ui-icon-plus'
 				}
-	     })
+	    })
 		.removeClass('ui-corner-all')
 		.addClass('ui-corner-top')
 	    .css({ top:'7px', left:'10px' , float:'left' , position:'absolute' , opacity: '0.8' , 'z-index':100})
@@ -219,9 +214,9 @@ jQuery.jGmapUi = function(map,options){
 			 $("#slider-vertical").slider("value", gmapUi_map.getZoom());
 		})
 	    .appendTo(gmapUi_mapContainer);
-   }
+	}
   
-   function  addGLargeMapControlZoom(){	
+	function  addGLargeMapControlZoom(){	
 
 		$('<div style="height:120px; margin-left: 8px;" id="slider-vertical"></div>')
 		.css({ top:'115px', left:'30px' , float:'left' , position:'absolute' , opacity: '0.8'})
@@ -271,7 +266,6 @@ jQuery.jGmapUi = function(map,options){
 			 $("#slider-vertical").slider("value", gmapUi_map.getZoom());
 		})
 	    .appendTo(gmapUi_mapContainer);
-   }
+	}
 
-	
 }
